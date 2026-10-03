@@ -1231,20 +1231,81 @@ section h2 {
         display: flex;
     }
 }
+        /* =========================
+   FINAL RESPONSIVE NAVIGATION
+========================= */
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    color: #00d9ff;
+    border: 1px solid #00d9ff;
+    border-radius: 8px;
+    padding: 6px 11px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    nav {
+        padding: 14px 18px;
+        position: fixed;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 15px;
+        right: 15px;
+        width: auto;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px;
+        background: #080c14;
+        border: 1px solid #1d2a3d;
+        border-radius: 12px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+        font-size: 15px;
+    }
+}
     </style>
 </head>
 <body>
 <!--Navigation-->
 <nav>
     <h2>Prosper.</h2>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-        
+
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation">
+        ☰
+    </button>
+
+    <ul id="nav-links">
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+        <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+        <li><a href="#education" onclick="closeMenu()">Education</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     </ul>
 </nav>
 <!--Home-->
@@ -1557,5 +1618,16 @@ alt;developer&gt;
 
     </div>
 </section>
+    <script>
+function toggleMenu() {
+    const navLinks = document.getElementById("nav-links");
+    navLinks.classList.toggle("active");
+}
+
+function closeMenu() {
+    const navLinks = document.getElementById("nav-links");
+    navLinks.classList.remove("active");
+}
+</script>
 </body>
 </html>
